@@ -1,11 +1,14 @@
-<div class="row">
+<div class="row post">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <a class="nav-link" href="#">{{ author }}</a>
+        <a class="nav-link link-usuario" href="#">{{ post.nomePessoa }}</a>
       </div>
       <div class="card-body">
-        <p class="card-text">{{ content }}</p>
+        <h4 class="card-text">{{ post.texto }}</h4>
+        <hr>
+        <a href="#" class="card-link likes">{{ post.qtdLikes }} likes</a>
+        <a href="#" class="card-link" (click)="recebeuLike(post)" >Like</a>
       </div>
     </div>
   </div>

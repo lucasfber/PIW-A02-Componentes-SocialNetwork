@@ -1,0 +1,11 @@
+.post {
+    margin-bottom: 20px;
+}
+
+.link-usuario {
+    display: inline;
+}
+
+.likes {
+    cursor: default;
+}

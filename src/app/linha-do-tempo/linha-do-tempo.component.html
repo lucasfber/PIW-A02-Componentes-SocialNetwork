@@ -1,0 +1,5 @@
+<app-post class="post" *ngFor="let post of posts"
+          [post]="post"
+          (recebeLike)="trataLike($event)">
+</app-post>
+ 
