@@ -1,20 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
-    <img title="Music HotSpot" width="30" height="30" src="./assets/logo.png" />
+    <img title="Music HotSpot" width="30" height="30" src="./assets/icon.png" />
   </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">My Timeline</a>
+  <div class="collapse navbar-collapse" id="navbarsExample05">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" routerLinkActive="active">
+        <a class="nav-link" routerLink="/timeline">Linha do Tempo
+          <span class="sr-only">(current)</span>
+        </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">My Profile</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/postar">Postar</a>
       </li>
     </ul>
 
-    <div>
-      <a class="nav-link" href="#">Lucas</a>
+    <div class="user">
+      <a class="nav-link link-user" routerLink="/timeline">Lucas</a>
     </div>
   </div>
 </nav>

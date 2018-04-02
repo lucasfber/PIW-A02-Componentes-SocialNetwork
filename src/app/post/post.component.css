@@ -7,5 +7,23 @@
 }
 
 .likes {
-    cursor: default;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.like-icon {
+    font-size: 20px;
+    color: #2a81ff;
+    margin-left: 1px;
+}
+
+.like-icon::before {
+    display: "table";
+}
+
+.delete-icon {
+    position: absolute;
+    right: 10px;
+    
+    cursor: pointer;
 }

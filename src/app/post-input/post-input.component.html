@@ -1,0 +1,23 @@
+<h3>Novo post</h3>
+<form>
+  <div class="form-group">
+    <label for="nomePessoa">Nome:</label>
+    <input class="form-control" 
+          id="nomePessoa" 
+          type="text"
+          name="nomePessoa" 
+          placeholder="Your username..."
+          [(ngModel)]="nomePessoa">
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" 
+          cols="10" rows="2" 
+          name="textoPost"
+          placeholder="Write your post here..."
+          [(ngModel)]="textoPost"></textarea>
+  </div>
+  <div>
+    <button class="btn btn-primary"
+    (click)="mostra($event)">Post</button>
+  </div>
+</form>

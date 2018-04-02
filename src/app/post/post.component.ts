@@ -1,3 +1,4 @@
+import { PostService } from './../services/post.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Post } from './post.model';
@@ -15,9 +16,11 @@ export class PostComponent implements OnInit {
   
   curtido = false;
 
-  constructor() {}
+  constructor(public postService: PostService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   recebeuLike(post: Post){
     post.qtdLikes++;

@@ -3,12 +3,17 @@
     <div class="card">
       <div class="card-header">
         <a class="nav-link link-usuario" href="#">{{ post.nomePessoa }}</a>
+        <i class="fa fa-times delete-icon" (click)="postService.excluir(post.id)"></i>
       </div>
       <div class="card-body">
         <h4 class="card-text">{{ post.texto }}</h4>
         <hr>
-        <a href="#" class="card-link likes">{{ post.qtdLikes }} likes</a>
-        <a href="#" class="card-link" (click)="recebeuLike(post)" >Like</a>
+        <div class="likes">
+          <p class="text-primary likes">{{ post.qtdLikes }} likes |</p>
+          <i class="fa fa-thumbs-up font-weight-bold like-icon" 
+          title="Like" 
+          (click)="postService.adicionarLike(post)"></i>
+        </div>
       </div>
     </div>
   </div>
