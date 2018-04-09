@@ -5,7 +5,8 @@
         <a class="nav-link link-usuario" href="#">{{ post.nomePessoa }}</a>
         <i class="fa fa-pencil-square-o edit-icon" title="Editar Post"
            (click)="editarPost(post.texto)"></i>
-        <i class="fa fa-times delete-icon" (click)="excluirPost(post.id)"></i>
+        <i class="fa fa-times delete-icon" title="Excluir Post"
+          (click)="excluirPost(post.id)"></i>
       </div>
       <div class="card-body">
         <h4 class="card-text" [class.visivel]="modoEdicao">{{ post.texto }}</h4>
@@ -15,11 +16,10 @@
                 cols="10" rows="4"></textarea>
 
           <div class="edit-buttons">
-              <button class="btn btn-success" 
-                      type="button"
-                      (click)="salvarAlteracao(post)">Concluir</button>
+              <button class="btn btn-success" type="button"
+                  (click)="salvarAlteracao(post)">Concluir</button>
               <button class="btn btn-danger" type="button"
-              (click)="cancelar()">Cancelar</button>
+                  (click)="cancelar()">Cancelar</button>
           </div>
         </div>
 

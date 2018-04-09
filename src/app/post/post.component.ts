@@ -21,9 +21,7 @@ export class PostComponent implements OnInit {
 
   constructor(private postService: PostService) {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() { }
 
   adicionarLike(post: Post){
     post.qtdLikes++;
@@ -32,7 +30,6 @@ export class PostComponent implements OnInit {
 
   excluirPost(id) {
     this.excluiPost.emit(id);
-    console.log(id + ' emitido');
   }
 
   editarPost(texto: string) {
