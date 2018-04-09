@@ -1,45 +1,46 @@
 import { Injectable } from "@angular/core";
+import { Http, Response } from '@angular/http';
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 import { Post } from "../post/post.model";
 
 @Injectable()
 export class PostService {
-  private posts: Post[] = [
-    new Post(1, "officialblacksabbath", "New DVD is coming", 230),
-    new Post(2, "orappa", "Novo álbum já disponível no Spotify", 90),
-    new Post(3, "officialjimihendrix", "New tribute's album on iTunes", 200)
-  ];
+  
+  posts: Post[] = [];
+  URL: string = "http://rest.learncode.academy/api/bertoldo/posts";
+  
 
-  constructor() {}
+  constructor(private http: Http) {}
 
   adicionarPost(post: Post) {
-    this.posts.push(post);
+    return this.http.post(this.URL, post)
+            .map((response: Response) => response.json())
+            .catch((error: Response) => Observable.throw(error))
   }
 
-  // ver outra versao de deletarStudents
-  /* excluirPost(idPost: number) {
-    let indexPost = this.posts.indexOf(this.buscarPostPorId(idPost));
-    this.posts.splice(indexPost, 1);
-  } */
-
-  excluir(idPost: number) {
-    let indexPost = this.posts.indexOf(this.buscarPostPorId(idPost));
-    this.posts.splice(indexPost, 1);
+  excluirPost(idPost: number) {
+    return this.http.delete(`${this.URL}/${idPost}`)
+            .map((response:Response) => response.text)
+            .catch((error: Response) => Observable.throw(error)); 
   }
 
-  getPosts() {
-    return this.posts;
+  editarPost(post: Post) {
+    let postEditado = new Post(post.id, post.nomePessoa, post.texto, post.qtdLikes);
+    return this.http.put(`${this.URL}/${post.id}`, postEditado);
   }
 
-  adicionarLike(post: Post) {
-    let indexPost = this.posts.indexOf(post);
-    post.qtdLikes++;
-    this.posts.splice(indexPost, 1, post);
-  }
-
-  private buscarPostPorId(id: number): Post {
-    return this.posts.filter(post => {
-      return post.id === id;
-    })[0];
+  getPosts(): Observable<Post[]> {
+    return this.http.get(this.URL)
+      .map((response: Response) => {
+        this.posts = [];
+        for(let p of response.json()){
+          this.posts.push(new Post(p.id, p.nomePessoa, p.texto, p.qtdLikes))
+        }
+        return this.posts;
+      })
+      .catch((error: Response) => Observable.throw(error));
   }
 }

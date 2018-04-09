@@ -14,10 +14,34 @@ export class LinhaDoTempoComponent implements OnInit {
   constructor(private postService: PostService) {}
 
   ngOnInit() {
-    this.posts = this.postService.getPosts();
+      this.renderTimeline();  
   }
   
+  renderTimeline() {
+    this.postService.getPosts()
+      .subscribe((data) => this.posts = data);
+  }
+
   trataLike(e: Post){
-      console.log(`${e.nomePessoa} - ${e.texto}`);
+    this.postService.editarPost(e)
+    .subscribe((data) => {
+        this.renderTimeline();
+        console.log(data)
+      },
+      (error) => console.log(error));
+  }
+
+  trataExcluirPost(id) {
+    this.postService.excluirPost(id)
+      .subscribe((data) => {
+        this.renderTimeline();
+      });
+  }
+
+  trataEditarPost(e: Post) {
+     this.postService.editarPost(e)
+      .subscribe((data) => {
+        this.renderTimeline();
+      }, error => console.log(error));
   }
 }

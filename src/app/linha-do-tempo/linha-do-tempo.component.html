@@ -1,5 +1,8 @@
 <app-post class="post" *ngFor="let post of posts"
-          [post]="post"
-          (recebeLike)="trataLike($event)">
+        [post]="post"
+        (excluiPost)="trataExcluirPost($event)"
+        (atualizaPost)="trataEditarPost($event)"
+        (recebeLike)="trataLike($event)">
 </app-post>
+
  

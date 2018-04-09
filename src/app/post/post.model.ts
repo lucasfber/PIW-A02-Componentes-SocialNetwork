@@ -11,4 +11,5 @@ export class Post {
         this.texto = texto;
         this.qtdLikes = qtdLikes;
     }
+
 }

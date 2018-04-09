@@ -6,6 +6,12 @@
     display: inline;
 }
 
+.link-edit {
+    display: inline;
+    padding: 0;
+    color: black;
+}
+
 .likes {
     cursor: pointer;
     display: inline-block;
@@ -24,6 +30,33 @@
 .delete-icon {
     position: absolute;
     right: 10px;
-    
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.visivel {
+    display: none;
+}
+
+.edit-group {
+    position: relative;
+}
+
+.edit-buttons {
+    position: absolute;
+    right: 4px;
+    margin-top: 10px;
+}
+
+.modoEdicao {
+    margin-top: 10px;
+    margin-left: 8px;
+}
+
+.edit-icon {
+    position: absolute;
+    right: 30px;
+    top: 14px;
+    font-size: 17px;
     cursor: pointer;
 }

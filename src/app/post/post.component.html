@@ -3,16 +3,30 @@
     <div class="card">
       <div class="card-header">
         <a class="nav-link link-usuario" href="#">{{ post.nomePessoa }}</a>
-        <i class="fa fa-times delete-icon" (click)="postService.excluir(post.id)"></i>
+        <i class="fa fa-pencil-square-o edit-icon" title="Editar Post"
+           (click)="editarPost(post.texto)"></i>
+        <i class="fa fa-times delete-icon" (click)="excluirPost(post.id)"></i>
       </div>
       <div class="card-body">
-        <h4 class="card-text">{{ post.texto }}</h4>
-        <hr>
-        <div class="likes">
+        <h4 class="card-text" [class.visivel]="modoEdicao">{{ post.texto }}</h4>
+        <div [class.visivel]="!modoEdicao" class="edit-group">
+          <textarea class="form-control" name="textoPost" 
+                [(ngModel)]="novoTexto"
+                cols="10" rows="4"></textarea>
+
+          <div class="edit-buttons">
+              <button class="btn btn-success" 
+                      type="button"
+                      (click)="salvarAlteracao(post)">Concluir</button>
+              <button class="btn btn-danger" type="button"
+              (click)="cancelar()">Cancelar</button>
+          </div>
+        </div>
+
+        <hr [class.visivel]="modoEdicao">
+        <div class="likes" [class.modoEdicao]="modoEdicao">
           <p class="text-primary likes">{{ post.qtdLikes }} likes |</p>
-          <i class="fa fa-thumbs-up font-weight-bold like-icon" 
-          title="Like" 
-          (click)="postService.adicionarLike(post)"></i>
+          <i class="fa fa-thumbs-up font-weight-bold like-icon" title="Like" (click)="adicionarLike(post)"></i>
         </div>
       </div>
     </div>

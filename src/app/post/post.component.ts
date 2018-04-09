@@ -10,21 +10,42 @@ import { Post } from './post.model';
 })
 export class PostComponent implements OnInit {
 
-  @Input() post: Post;
-  
-  @Output() recebeLike = new EventEmitter<Post>();
-  
-  curtido = false;
+  @Input() post: Post; 
+  @Input() modoEdicao = false;
 
-  constructor(public postService: PostService) {}
+  @Output() recebeLike = new EventEmitter<Post>();
+  @Output() excluiPost = new EventEmitter<Post>();
+  @Output() atualizaPost = new EventEmitter<Post>();
+
+  novoTexto = '';
+
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
     
   }
 
-  recebeuLike(post: Post){
+  adicionarLike(post: Post){
     post.qtdLikes++;
     this.recebeLike.emit(post);
   }
 
+  excluirPost(id) {
+    this.excluiPost.emit(id);
+    console.log(id + ' emitido');
+  }
+
+  editarPost(texto: string) {
+    this.novoTexto = texto;
+    this.modoEdicao = !this.modoEdicao;
+  }
+
+  cancelar() {
+    this.modoEdicao = !this.modoEdicao;
+  }
+
+  salvarAlteracao(post: Post) {
+    post.texto = this.novoTexto;
+    this.atualizaPost.emit(post);
+  }
 }

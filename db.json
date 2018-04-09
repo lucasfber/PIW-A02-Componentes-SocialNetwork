@@ -1,0 +1,10 @@
+{
+  "results": [
+    {
+      "id": 3,
+      "nomePessoa": "lucas",
+      "texto": "algo novo",
+      "qtdLikes": 2
+    }
+  ]
+}
