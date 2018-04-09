@@ -26,7 +26,12 @@
         <hr [class.visivel]="modoEdicao">
         <div class="likes" [class.modoEdicao]="modoEdicao">
           <p class="text-primary likes">{{ post.qtdLikes }} likes |</p>
-          <i class="fa fa-thumbs-up font-weight-bold like-icon" title="Like" (click)="adicionarLike(post)"></i>
+          <i class="fa fa-thumbs-up font-weight-bold" 
+              [class.like-icon]="post.qtdLikes !== 0"
+              [class.unlike-icon]="post.qtdLikes === 0"
+              title="Like" 
+              (click)="adicionarLike(post)"></i>
+          
         </div>
       </div>
     </div>

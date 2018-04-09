@@ -18,13 +18,19 @@ export class PostComponent implements OnInit {
   @Output() atualizaPost = new EventEmitter<Post>();
 
   novoTexto = '';
+  curtido: boolean = false;
 
   constructor(private postService: PostService) {}
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.post.qtdLikes > 0 ? this.curtido = true : this.curtido = false;
+  }
 
   adicionarLike(post: Post){
-    post.qtdLikes++;
+    this.curtido = !this.curtido;
+    
+    !this.curtido ? post.qtdLikes-- : post.qtdLikes++;
+    
     this.recebeLike.emit(post);
   }
 
